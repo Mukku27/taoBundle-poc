@@ -6,6 +6,7 @@ import bittensor as bt
 import subprocess
 import json
 import base64
+import typing
 
 from protocol import Bundle
 
