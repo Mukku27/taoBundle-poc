@@ -30,7 +30,7 @@ class Miner:
             "{}/{}/{}/netuid{}/{}".format(
                 config.logging.logging_dir,
                 config.wallet.name,
-                config.wallet.hotkey.ss58_address,
+                config.wallet.hotkey,
                 config.netuid,
                 "miner",
             )
@@ -77,9 +77,10 @@ class Miner:
                 text=True,
                 check=True
             )
-            
+            bt.logging.debug(f"Bundler script output: {process}")
             # Parse the JSON output from the script
             response = json.loads(process.stdout)
+            bt.logging.debug(f"Bundler script response: {response}")
             if response.get("success"):
                 return response
             else:
@@ -100,7 +101,7 @@ class Miner:
 
         # Call the JS script to create the bundle
         bundle_response = self.call_bundler_script("bundle", {"data_items": synapse.data_items})
-
+        bt.logging.debug(f"Bundle response: {bundle_response}")
         if bundle_response:
             synapse.bundle_data = bundle_response.get("bundle_data_b64")
             synapse.bundle_id = bundle_response.get("bundle_id")

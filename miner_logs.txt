@@ -1,0 +1,61 @@
+ python miner.py --wallet.name miner --wallet.hotkey default --subtensor.network local --axon.port 8901 --netuid 2 --logging.debug
+2025-06-15 17:29:24.521 |       INFO       | bittensor:loggingmachine.py:423 | Debug enabled.
+2025-06-15 17:29:27.145 |       INFO       | bittensor:loggingmachine.py:410 | Enabling debug.
+2025-06-15 17:29:27.145 |       INFO       | bittensor:loggingmachine.py:423 | Debug enabled.
+2025-06-15 17:29:27.146 |       INFO       | bittensor:miner.py:43 | Running miner for subnet: 2 on network: local with config:
+2025-06-15 17:29:27.148 |       INFO       | bittensor:miner.py:46 | netuid: 2
+subtensor:
+  network: local
+  chain_endpoint: wss://entrypoint-finney.opentensor.ai:443
+  _mock: false
+logging:
+  debug: true
+  trace: false
+  info: false
+  record_log: false
+  logging_dir: /home/hemu21/.bittensor/miners/miner/default/netuid2/miner
+wallet:
+  name: miner
+  hotkey: default
+  path: ~/.bittensor/wallets/
+axon:
+  port: 8901
+  ip: '[::]'
+  external_port: null
+  external_ip: null
+  max_workers: 10
+config: false
+strict: false
+no_version_checking: false
+full_path: /home/hemu21/.bittensor/miners/miner/default/netuid2/miner
+2025-06-15 17:29:27.148 |       INFO       | bittensor:miner.py:49 | Setting up Bittensor objects.
+2025-06-15 17:29:27.148 |       INFO       | bittensor:miner.py:51 | Wallet: Wallet (Name: 'miner', Hotkey: 'default', Path: '~/.bittensor/wallets/')
+2025-06-15 17:29:27.148 |      DEBUG       | bittensor:subtensor.py:146 | Connecting to network: local, chain_endpoint: ws://127.0.0.1:9944> ...
+2025-06-15 17:29:27.736 |       INFO       | bittensor:miner.py:53 | Subtensor: Network: local, Chain: ws://127.0.0.1:9944
+2025-06-15 17:29:27.868 |       INFO       | bittensor:miner.py:55 | Metagraph: metagraph(netuid:2, n:3, block:706, network:local)
+2025-06-15 17:29:27.875 |       INFO       | bittensor:miner.py:64 | Running miner on uid: 1
+2025-06-15 17:29:28.146 |       INFO       | bittensor:miner.py:132 | Attaching forward function to axon.
+2025-06-15 17:29:28.147 |       INFO       | bittensor:miner.py:137 | Serving axon on network: local with netuid: 2
+2025-06-15 17:29:28.150 |      DEBUG       | bittensor:serving.py:128 | Checking axon ...
+2025-06-15 17:29:28.163 |      DEBUG       | bittensor:serving.py:134 | Axon already served on: AxonInfo(5Gut2QqNKHtAZGhcYQcQ6ykxpFFuQNGFvboW2kAY2MV3c3mg, 152.59.205.59:8901)
+2025-06-15 17:29:28.163 |       INFO       | bittensor:miner.py:139 | Axon: Axon([::], 8901, 5Gut2QqNKHtAZGhcYQcQ6ykxpFFuQNGFvboW2kAY2MV3c3mg, stopped, ['Synapse', 'Bundle'])
+2025-06-15 17:29:28.163 |       INFO       | bittensor:miner.py:140 | Starting axon server on port: 8901
+2025-06-15 17:29:28.165 |       INFO       | bittensor:miner.py:145 | Starting main loop
+2025-06-15 17:29:28.286 |       INFO       | bittensor:miner.py:151 | Synced metagraph: metagraph(netuid:2, n:3, block:706, network:local)
+2025-06-15 17:29:33.312 |       INFO       | bittensor:miner.py:151 | Synced metagraph: metagraph(netuid:2, n:3, block:706, network:local)
+2025-06-15 17:29:38.341 |       INFO       | bittensor:miner.py:151 | Synced metagraph: metagraph(netuid:2, n:3, block:707, network:local)
+2025-06-15 17:29:43.369 |       INFO       | bittensor:miner.py:151 | Synced metagraph: metagraph(netuid:2, n:3, block:707, network:local)
+2025-06-15 17:29:48.400 |       INFO       | bittensor:miner.py:151 | Synced metagraph: metagraph(netuid:2, n:3, block:708, network:local)
+2025-06-15 17:29:53.520 |       INFO       | bittensor:miner.py:151 | Synced metagraph: metagraph(netuid:2, n:3, block:708, network:local)
+2025-06-15 17:29:58.320 |       INFO       | bittensor:miner.py:100 | Received bundling request for 3 items.
+2025-06-15 17:29:58.551 |       INFO       | bittensor:miner.py:151 | Synced metagraph: metagraph(netuid:2, n:3, block:708, network:local)
+2025-06-15 17:30:03.584 |       INFO       | bittensor:miner.py:151 | Synced metagraph: metagraph(netuid:2, n:3, block:709, network:local)
+2025-06-15 17:30:06.681 |      DEBUG       | bittensor:miner.py:80 | Bundler script output: CompletedProcess(args=['node', '/mnt/d/taoBundle-poc/js/bundler.js'], returncode=0, stdout='{"success":true,"bundle_data_b64":"AQA4bqdcLv8JHO7K3CUNZEd/J9t9b6ilkTSOiDcAwKEYcZSHiajTKNjGkE6eVliJNxAgOZLG/WZSUQGpdEqTIqO+NNjmJCIFkTVMech2ckFVUlQONd9AstDxJ/C0ehUGzB5dJc+7XudtTOvbAg1X8syWg/BkguZXqV8FKKYujqrat9K7NXWAXX8TQsepzeHGRZG5VQwqpPs3kN7Xh0BElkga0wytmeLVUhD/0d3JLVrJqSHWWmZlGxel2XiXlO2zAXO3BjiHtFkwFToApvu047ASJvubL3FJ6mw169TB/Y7hsoGt2gsZvqwsvcHp8O4xKa58HFivBhHPHeDacuCOweTGIlwI7Cqyvs9KzlpGIJKk90/4znhHjz+cOM4r2ZPdugTAUwBpokgX838sElkb2rXmE33yomMkUANSqhDqnAIsCJoNqM6kzKPdKq1Ds2uo8vGVkrIj6DM6HYkbN+20N9IyJ3yJ6Bw7ISSSXZs9WTaKX/g1ccDAnS53hyykjPOBheQW+Io6VmpImWZm9DV+A5EamcJIj40l6xN62VkBeaKG1TzfgsIIE5kAOLFyNs3FL3lRThXb9WbmbtupU5hiT7gM8bJVeKns7pTRcjaFyZO8iybhwOaS8xG3RMeRa25PWjsAV9ETvRVZvC2wnSI8DGoeB7Xda+8cMNNv8UwJCHRhAZMizcE1rBPHDsUlRikdsbkIR5MiiVjpqPrjnL8+f8Z6suYR4PVreBpjwzlBV2r3KPeRfmDCM3e+CZip/xNY8FpS4rx8BMLiZa2IkO/BiF5rwDcHMIew/WtRf1qbR/IQ0a2XO5JPjHwU3ZJCPwHqb3h7D+6mZzInHoeZ1t2zbYTdVaDoIJ2iPuW88Cx917o93ZS3pnf0wL2qUq6n/GB2USr3ICPzsqmTS9J9dRk9YFhAji4uP8aI1hTltvVFfmq6M/n30nPouBYE0uLaE8sj5ieXZ5HEDpYrQZSJnOdV10pkTa42t0BNI4GQuJLSBul7g2Kq0QXHXFVCHSk1knVahG/61DVmwZnaw57hq0U58g6K1BcQjUXdl9i6Fn0cKvoLzkt498cw52sjNwTh/qsU7R1J+nNwlNVRPhKTk6Jc/cZAuU+vRjKGxnxf8oZMh4f73QqR2nUzTm21vDNc68GB01t3vtPzCnWffYKejTB4ZBH2U2pyrGay2I5WRqwMl/XEmK1uuz8Qwmm4nbrfvqYoXQ8YCcMwd906GJeZcusr3cG//8ahG7oT6cLykc2rvG5GxH1YJfgYEpAyex1807Pjbn9/7Po23ONixeA1bU9WVdEsuRVA51VG5/RoEiobYOEoS4VMu6aLYdwytGnIFKbPKLUVNT3s/QTwTODarwN38WvxAAAAAAAAAAAAAAAAAAAAAAAAAAAA","bundle_id":"XpbKpaEz0VHo8J8Jenm51LQtu293No3ArtlonCEzt8s","merkle_root":"t4dI35-O22SyFNV_wWAVIIeNXaWnTnN3uYluescA5Ck"}', stderr='')
+2025-06-15 17:30:06.682 |      DEBUG       | bittensor:miner.py:83 | Bundler script response: {'success': True, 'bundle_data_b64': 'AQA4bqdcLv8JHO7K3CUNZEd/J9t9b6ilkTSOiDcAwKEYcZSHiajTKNjGkE6eVliJNxAgOZLG/WZSUQGpdEqTIqO+NNjmJCIFkTVMech2ckFVUlQONd9AstDxJ/C0ehUGzB5dJc+7XudtTOvbAg1X8syWg/BkguZXqV8FKKYujqrat9K7NXWAXX8TQsepzeHGRZG5VQwqpPs3kN7Xh0BElkga0wytmeLVUhD/0d3JLVrJqSHWWmZlGxel2XiXlO2zAXO3BjiHtFkwFToApvu047ASJvubL3FJ6mw169TB/Y7hsoGt2gsZvqwsvcHp8O4xKa58HFivBhHPHeDacuCOweTGIlwI7Cqyvs9KzlpGIJKk90/4znhHjz+cOM4r2ZPdugTAUwBpokgX838sElkb2rXmE33yomMkUANSqhDqnAIsCJoNqM6kzKPdKq1Ds2uo8vGVkrIj6DM6HYkbN+20N9IyJ3yJ6Bw7ISSSXZs9WTaKX/g1ccDAnS53hyykjPOBheQW+Io6VmpImWZm9DV+A5EamcJIj40l6xN62VkBeaKG1TzfgsIIE5kAOLFyNs3FL3lRThXb9WbmbtupU5hiT7gM8bJVeKns7pTRcjaFyZO8iybhwOaS8xG3RMeRa25PWjsAV9ETvRVZvC2wnSI8DGoeB7Xda+8cMNNv8UwJCHRhAZMizcE1rBPHDsUlRikdsbkIR5MiiVjpqPrjnL8+f8Z6suYR4PVreBpjwzlBV2r3KPeRfmDCM3e+CZip/xNY8FpS4rx8BMLiZa2IkO/BiF5rwDcHMIew/WtRf1qbR/IQ0a2XO5JPjHwU3ZJCPwHqb3h7D+6mZzInHoeZ1t2zbYTdVaDoIJ2iPuW88Cx917o93ZS3pnf0wL2qUq6n/GB2USr3ICPzsqmTS9J9dRk9YFhAji4uP8aI1hTltvVFfmq6M/n30nPouBYE0uLaE8sj5ieXZ5HEDpYrQZSJnOdV10pkTa42t0BNI4GQuJLSBul7g2Kq0QXHXFVCHSk1knVahG/61DVmwZnaw57hq0U58g6K1BcQjUXdl9i6Fn0cKvoLzkt498cw52sjNwTh/qsU7R1J+nNwlNVRPhKTk6Jc/cZAuU+vRjKGxnxf8oZMh4f73QqR2nUzTm21vDNc68GB01t3vtPzCnWffYKejTB4ZBH2U2pyrGay2I5WRqwMl/XEmK1uuz8Qwmm4nbrfvqYoXQ8YCcMwd906GJeZcusr3cG//8ahG7oT6cLykc2rvG5GxH1YJfgYEpAyex1807Pjbn9/7Po23ONixeA1bU9WVdEsuRVA51VG5/RoEiobYOEoS4VMu6aLYdwytGnIFKbPKLUVNT3s/QTwTODarwN38WvxAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 'bundle_id': 'XpbKpaEz0VHo8J8Jenm51LQtu293No3ArtlonCEzt8s', 'merkle_root': 't4dI35-O22SyFNV_wWAVIIeNXaWnTnN3uYluescA5Ck'}
+2025-06-15 17:30:06.682 |      DEBUG       | bittensor:miner.py:104 | Bundle response: {'success': True, 'bundle_data_b64': 'AQA4bqdcLv8JHO7K3CUNZEd/J9t9b6ilkTSOiDcAwKEYcZSHiajTKNjGkE6eVliJNxAgOZLG/WZSUQGpdEqTIqO+NNjmJCIFkTVMech2ckFVUlQONd9AstDxJ/C0ehUGzB5dJc+7XudtTOvbAg1X8syWg/BkguZXqV8FKKYujqrat9K7NXWAXX8TQsepzeHGRZG5VQwqpPs3kN7Xh0BElkga0wytmeLVUhD/0d3JLVrJqSHWWmZlGxel2XiXlO2zAXO3BjiHtFkwFToApvu047ASJvubL3FJ6mw169TB/Y7hsoGt2gsZvqwsvcHp8O4xKa58HFivBhHPHeDacuCOweTGIlwI7Cqyvs9KzlpGIJKk90/4znhHjz+cOM4r2ZPdugTAUwBpokgX838sElkb2rXmE33yomMkUANSqhDqnAIsCJoNqM6kzKPdKq1Ds2uo8vGVkrIj6DM6HYkbN+20N9IyJ3yJ6Bw7ISSSXZs9WTaKX/g1ccDAnS53hyykjPOBheQW+Io6VmpImWZm9DV+A5EamcJIj40l6xN62VkBeaKG1TzfgsIIE5kAOLFyNs3FL3lRThXb9WbmbtupU5hiT7gM8bJVeKns7pTRcjaFyZO8iybhwOaS8xG3RMeRa25PWjsAV9ETvRVZvC2wnSI8DGoeB7Xda+8cMNNv8UwJCHRhAZMizcE1rBPHDsUlRikdsbkIR5MiiVjpqPrjnL8+f8Z6suYR4PVreBpjwzlBV2r3KPeRfmDCM3e+CZip/xNY8FpS4rx8BMLiZa2IkO/BiF5rwDcHMIew/WtRf1qbR/IQ0a2XO5JPjHwU3ZJCPwHqb3h7D+6mZzInHoeZ1t2zbYTdVaDoIJ2iPuW88Cx917o93ZS3pnf0wL2qUq6n/GB2USr3ICPzsqmTS9J9dRk9YFhAji4uP8aI1hTltvVFfmq6M/n30nPouBYE0uLaE8sj5ieXZ5HEDpYrQZSJnOdV10pkTa42t0BNI4GQuJLSBul7g2Kq0QXHXFVCHSk1knVahG/61DVmwZnaw57hq0U58g6K1BcQjUXdl9i6Fn0cKvoLzkt498cw52sjNwTh/qsU7R1J+nNwlNVRPhKTk6Jc/cZAuU+vRjKGxnxf8oZMh4f73QqR2nUzTm21vDNc68GB01t3vtPzCnWffYKejTB4ZBH2U2pyrGay2I5WRqwMl/XEmK1uuz8Qwmm4nbrfvqYoXQ8YCcMwd906GJeZcusr3cG//8ahG7oT6cLykc2rvG5GxH1YJfgYEpAyex1807Pjbn9/7Po23ONixeA1bU9WVdEsuRVA51VG5/RoEiobYOEoS4VMu6aLYdwytGnIFKbPKLUVNT3s/QTwTODarwN38WvxAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 'bundle_id': 'XpbKpaEz0VHo8J8Jenm51LQtu293No3ArtlonCEzt8s', 'merkle_root': 't4dI35-O22SyFNV_wWAVIIeNXaWnTnN3uYluescA5Ck'}
+2025-06-15 17:30:06.682 |       INFO       | bittensor:miner.py:114 | Successfully bundled 3 items. Merkle root: t4dI35-O22SyFNV_wWAVIIeNXaWnTn...
+2025-06-15 17:30:08.613 |       INFO       | bittensor:miner.py:151 | Synced metagraph: metagraph(netuid:2, n:3, block:709, network:local)
+2025-06-15 17:30:13.644 |       INFO       | bittensor:miner.py:151 | Synced metagraph: metagraph(netuid:2, n:3, block:710, network:local)
+2025-06-15 17:30:18.760 |       INFO       | bittensor:miner.py:151 | Synced metagraph: metagraph(netuid:2, n:3, block:710, network:local)
+2025-06-15 17:30:23.788 |       INFO       | bittensor:miner.py:151 | Synced metagraph: metagraph(netuid:2, n:3, block:710, network:local)
+^C2025-06-15 17:30:25.628 |     SUCCESS      | bittensor:miner.py:156 | Miner killed by keyboard interrupt.

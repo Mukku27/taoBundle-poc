@@ -4,14 +4,14 @@
     "description": "A Node.js CLI for arbundles library to be called from Python.",
     "main": "bundler.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Mukku27",
     "license": "MIT",
     "dependencies": {
-      "@ar.io/arbundles": "^1.0.1",
-      "arweave": "^1.15.1",
-      "base64url": "^3.0.1"
+        "arbundles": "^0.11.2",
+        "arweave": "^1.15.1",
+        "axios": "^1.10.0",
+        "base64url": "^3.0.1"
     }
-  }
-  
+}
