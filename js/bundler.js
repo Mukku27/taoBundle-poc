@@ -1,28 +1,35 @@
-const { createData, bundleAndSignData, ArweaveSigner } = require("@ar.io/arbundles");
+const { createData, ArweaveSigner } = require("arbundles");
 const Arweave = require("arweave");
 
-// A simple in-memory JWK for demonstration.
-// In a real application, this should be managed securely.
-const jwk = {
-    "kty":"RSA",
-    "n":"p_3w_5YgJz-tI_3Z9s6-1I_5g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q",
-    "e":"AQAB",
-    "d":"p_3w_5YgJz-tI_3Z9s6-1I_5g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q",
-    "p":"p_3w_5YgJz-tI_3Z9s6-1I_5g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q-I_9g_7I-2P-g-Q"
-};
-const signer = new ArweaveSigner(jwk);
-
-const arweave = Arweave.init({});
+/** @type {*} */
+const arweave = Arweave.init({
+  host: "127.0.0.1", // "arweave.net" for production, 127.0.0.1 for local dev
+  port: 1984, // 443 for production, 1984 for local dev
+  protocol: "http", // "https" for production, "http" for local dev
+  logging: false, // set to true for debugging
+});
 
 // This function reads all data from stdin.
 async function readStdin() {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     let data = "";
+    process.stdin.setEncoding("utf-8"); // ensure input is string, not Buffer
+
     process.stdin.on("data", (chunk) => {
       data += chunk;
     });
+
     process.stdin.on("end", () => {
-      resolve(data);
+      try {
+        const parsed = JSON.parse(data);
+        resolve(parsed);
+      } catch (error) {
+        reject(new Error("Invalid JSON input"));
+      }
+    });
+
+    process.stdin.on("error", (err) => {
+      reject(err);
     });
   });
 }
@@ -32,19 +39,28 @@ async function createBundle(dataItems) {
   if (!Array.isArray(dataItems)) {
     throw new Error("data_items must be an array of strings.");
   }
-  const items = dataItems.map((item) => createData(item, signer, {}));
-  const bundle = await bundleAndSignData(items, signer);
-  const bundleBuffer = Buffer.from(bundle.getRaw());
-  
-  // To get the Merkle root, we need to create a transaction.
-  const tx = await arweave.createTransaction({ data: bundleBuffer });
-  tx.addTag("Bundle-Format", "binary");
-  tx.addTag("Bundle-Version", "2.0.0");
+
+  const jwk = await arweave.wallets.generate(); // auto generates the wallet if needed replace with your actual JWK
+
+  const signer = new ArweaveSigner(jwk);
+  const createdDataItems = createData(dataItems, signer, {});
+  await createdDataItems.sign(signer);
+
+  const endpoint = "https://turbo.ardrive.io/tx";
+  const res = await fetch(endpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/octet-stream" },
+    body: createdDataItems.getRaw(),
+  });
+  if (!res.ok) {
+    throw new Error(`Failed to upload bundle: ${res.statusText}`);
+  }
+  const tx = await arweave.createTransaction({ data: createdDataItems.id });
   await arweave.transactions.sign(tx, jwk);
 
   return {
-    bundle_data_b64: bundleBuffer.toString("base64"),
-    bundle_id: bundle.getIds()[0], // Just an example ID
+    bundle_data_b64: createdDataItems.getRaw().toString("base64"),
+    bundle_id: createdDataItems.id, // Just an example ID
     merkle_root: tx.data_root,
   };
 }
@@ -52,9 +68,7 @@ async function createBundle(dataItems) {
 // Main function to process commands.
 async function main() {
   try {
-    const rawInput = await readStdin();
-    const input = JSON.parse(rawInput);
-
+    const input = await readStdin();
     let result;
     switch (input.command) {
       case "bundle":

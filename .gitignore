@@ -1,1 +1,4 @@
 venv
+js/node_modules
+js/logs
+__pycache__

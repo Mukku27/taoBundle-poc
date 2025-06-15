@@ -1,0 +1,47 @@
+ python validator.py --wallet.name validator --wallet.hotkey default --subtensor.network local --netuid 2 --logging.debug
+2025-06-15 17:29:43.654 |       INFO       | bittensor:loggingmachine.py:423 | Debug enabled.
+2025-06-15 17:29:56.979 |       INFO       | bittensor:loggingmachine.py:410 | Enabling debug.
+2025-06-15 17:29:56.980 |       INFO       | bittensor:loggingmachine.py:423 | Debug enabled.
+2025-06-15 17:29:56.980 |       INFO       | bittensor:validator.py:44 | Running validator for subnet: 2 on network: local
+2025-06-15 17:29:56.982 |       INFO       | bittensor:validator.py:45 | netuid: 2
+subtensor:
+  network: local
+  chain_endpoint: wss://entrypoint-finney.opentensor.ai:443
+  _mock: false
+logging:
+  debug: true
+  trace: false
+  info: false
+  record_log: false
+  logging_dir: /home/hemu21/.bittensor/miners/validator/default/netuid2/validator
+wallet:
+  name: validator
+  hotkey: default
+  path: ~/.bittensor/wallets/
+config: false
+strict: false
+no_version_checking: false
+full_path: /home/hemu21/.bittensor/miners/validator/default/netuid2/validator
+2025-06-15 17:29:56.982 |       INFO       | bittensor:validator.py:48 | Setting up Bittensor objects.
+2025-06-15 17:29:56.982 |       INFO       | bittensor:validator.py:50 | Wallet: Wallet (Name: 'validator', Hotkey: 'default', Path: '~/.bittensor/wallets/')     
+2025-06-15 17:29:56.982 |      DEBUG       | bittensor:subtensor.py:146 | Connecting to network: local, chain_endpoint: ws://127.0.0.1:9944> ...
+2025-06-15 17:29:57.664 |       INFO       | bittensor:validator.py:52 | Subtensor: Network: local, Chain: ws://127.0.0.1:9944
+2025-06-15 17:29:57.943 |       INFO       | bittensor:validator.py:54 | Dendrite: dendrite(5Hn4KmajqKNtRWW4H4rrrKK6iFmyMwEU6Ca8P78Ey423CHW2)
+2025-06-15 17:29:58.107 |       INFO       | bittensor:validator.py:56 | Metagraph: metagraph(netuid:2, n:3, block:708, network:local)
+2025-06-15 17:29:58.109 |       INFO       | bittensor:validator.py:63 | Running validator on uid: 2
+2025-06-15 17:29:58.110 |       INFO       | bittensor:validator.py:65 | Building validation weights.
+2025-06-15 17:29:58.143 |       INFO       | bittensor:validator.py:67 | Weights: tensor([0., 0., 0.])
+2025-06-15 17:29:58.145 |       INFO       | bittensor:validator.py:122 | Starting validator loop.
+2025-06-15 17:29:58.240 |      DEBUG       | bittensor:dendrite.py:262 | ClientConnectorError#7101d811-815b-440a-8a00-de556d84bed7: Cannot connect to host 0.0.0.0:0 ssl:default [Connect call failed ('0.0.0.0', 0)]
+2025-06-15 17:29:58.270 |      DEBUG       | bittensor:dendrite.py:262 | ClientConnectorError#451b1443-9bdd-41f2-9f39-9f852e98d0e9: Cannot connect to host 0.0.0.0:0 ssl:default [Connect call failed ('0.0.0.0', 0)]
+Traceback (most recent call last):
+  File "/mnt/d/taoBundle-poc/validator.py", line 188, in <module>
+    validator.run()
+  File "/mnt/d/taoBundle-poc/validator.py", line 152, in run
+    score = self.verify_bundle_and_score(axons_to_query[i], resp)
+  File "/mnt/d/taoBundle-poc/validator.py", line 91, in verify_bundle_and_score
+    if not synapse_to_verify.bundle_data or not synapse_to_verify.merkle_root or not synapse_to_verify.signature:
+AttributeError: 'NoneType' object has no attribute 'bundle_data'
+I0615 17:30:06.758000 4904 torch/_subclasses/fake_tensor.py:2843] FakeTensor cache stats:
+I0615 17:30:06.761000 4904 torch/_subclasses/fake_tensor.py:2844]   cache_hits: 0
+I0615 17:30:06.765000 4904 torch/_subclasses/fake_tensor.py:2845]   cache_misses: 0

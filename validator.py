@@ -17,7 +17,7 @@ class Validator:
         self.setup_logging()
         self.setup_bittensor_objects()
         self.my_uid = self.metagraph.hotkeys.index(self.wallet.hotkey.ss58_address)
-        self.scores = torch.zeros_like(self.metagraph.S, dtype=torch.float32)
+        self.scores = torch.zeros_like(torch.from_numpy(self.metagraph.S), dtype=torch.float32)
         self.js_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "js/bundler.js")
 
 
@@ -32,7 +32,7 @@ class Validator:
             "{}/{}/{}/netuid{}/validator".format(
                 config.logging.logging_dir,
                 config.wallet.name,
-                config.wallet.hotkey.ss58_address,
+                config.wallet.hotkey,
                 config.netuid,
             )
         )
@@ -63,7 +63,7 @@ class Validator:
         bt.logging.info(f"Running validator on uid: {self.my_subnet_uid}")
         
         bt.logging.info("Building validation weights.")
-        self.scores = torch.zeros_like(self.metagraph.S, dtype=torch.float32)
+        self.scores = torch.zeros_like(torch.from_numpy(self.metagraph.S), dtype=torch.float32)
         bt.logging.info(f"Weights: {self.scores}")
 
     def call_bundler_script(self, command, payload):
@@ -124,7 +124,7 @@ class Validator:
         while True:
             try:
                 # Get a random set of active miners
-                miner_uids = self.metagraph.get_active_uids().tolist()
+                miner_uids = self.metagraph.uids.tolist()
                 if not miner_uids:
                     bt.logging.info("No active miners to query.")
                     time.sleep(20)
